@@ -5,18 +5,37 @@ import { useState } from 'react'
 
 function App() {
 
-  const [videogameName, setVideogameName] = useState('')
+  const [articles, setArticles] = useState(videogames);
 
+  const [newArticle, setNewArticle] = useState('');
+
+  const id = parseInt((articles.at(-1).id) + 1);
+
+  const newVideogame = {
+    id,
+    nome: newArticle
+  }
+
+  const addNewArticle = event => {
+    event.preventDefault();
+
+    const updateArticle = [...articles, newVideogame];
+
+    setArticles(updateArticle);
+    setNewArticle('');
+  }
 
   return (
     <>
 
       <ul>
-        {videogames.map(videogame => <li key={videogames.id}>{videogame.nome}</li>)}
+        {articles.map((article, i) => (<li key={i}>{article.nome}</li>))}
       </ul>
-      <form>
-        <input type="text" value={videogameName} onChange={e => { setVideogameName(e.target.value) }} />
+      <form onSubmit={addNewArticle}>
+        <input type="text" value={newArticle} onChange={e => { setNewArticle(e.target.value) }} />
+        <button>Aggiungi nuovo videogame</button>
       </form>
+
 
     </>
   )
