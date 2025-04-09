@@ -36,16 +36,18 @@ function App() {
   return (
     <>
 
-      <ul>
-        {articles.map((article, i) => (<li key={i}>{article.nome} <button onClick={() => removeArticle(i)}><i className="fa-solid fa-trash"></i></button></li>))}
-      </ul>
-      <form onSubmit={addNewArticle}>
-        <input type="text" value={newArticle} onChange={e => { setNewArticle(e.target.value) }} />
-        <button>Aggiungi nuovo videogame</button>
-
-      </form>
-
-
+      <div className='container'>
+        <h1>Lista Videogames</h1>
+        <ul>
+          {articles.map((article, i) => (<li key={i}>{article.nome} <button onClick={() => removeArticle(i)}><i className="fa-solid fa-trash icon"></i></button></li>))}
+        </ul>
+        <form onSubmit={addNewArticle}>
+          <div className='container-input'>
+            <input type="text" value={newArticle} onChange={e => { setNewArticle(e.target.value) }} />
+            <button>Aggiungi Nuovo Videogame</button>
+          </div>
+        </form>
+      </div>
     </>
   )
 }
