@@ -25,15 +25,24 @@ function App() {
     setNewArticle('');
   }
 
+  const removeArticle = i => {
+    const updateVideogames = articles.filter((article, index) => {
+      return index !== i
+    })
+
+    setArticles(updateVideogames);
+  }
+
   return (
     <>
 
       <ul>
-        {articles.map((article, i) => (<li key={i}>{article.nome}</li>))}
+        {articles.map((article, i) => (<li key={i}>{article.nome} <button onClick={() => removeArticle(i)}><i className="fa-solid fa-trash"></i></button></li>))}
       </ul>
       <form onSubmit={addNewArticle}>
         <input type="text" value={newArticle} onChange={e => { setNewArticle(e.target.value) }} />
         <button>Aggiungi nuovo videogame</button>
+
       </form>
 
 
