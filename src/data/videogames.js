@@ -31,3 +31,5 @@ const videogames =
             genere: ["Action-adventure", "Supereroi"]
         }
     ]
+
+export default videogames;
